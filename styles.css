@@ -45,11 +45,59 @@ body {
 }
 
 .options-panel button {
-    padding: 15px;
+    padding: 0 15px;
     border-radius: 10px;
     border-style: none;
     background-color: white;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 20px;
+    cursor: pointer;
 }
 
+.options-panel .reset:hover {
+    color: white;
+    background-color: black;
+    transition-duration: 0.3s;
+}
+
+.change-dimensions {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 20px;
+}
+
+.change-dimensions p {
+    margin: 0;
+}
+
+.change-dimensions button {
+    padding: 0;
+}
+
+.change-dimensions button:hover {
+    color:#8f1402
+}
+
+.dimension-slider {
+    appearance: none;
+    background: black;
+    outline: none;
+    border-radius: 50px;
+    width: 200px;
+}
+
+.dimension-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    background: white;
+    cursor: pointer;
+}

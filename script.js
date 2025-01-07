@@ -1,14 +1,13 @@
 const gridContainer = document.querySelector(".grid-container")
-const dimension = 16
 
-function makeGrid() {
-    // create a 16 x 16 grid of square divs inside the gridContainer
+function makeGrid(n=16) {
+    // create an n x n grid of square divs inside the gridContainer
 
-    for (let i=0; i<dimension; i++) {
+    for (let i=0; i<n; i++) {
         const row = document.createElement("div")
         row.className = "grid-row"
         gridContainer.appendChild(row)
-        for (let j=0; j<dimension; j++) {
+        for (let j=0; j<n; j++) {
             const square = document.createElement("div")
             square.className = "grid-square"
             row.appendChild(square)
@@ -25,7 +24,7 @@ function resetOpacity() {
     })
 }
 
-function startSketch() {
+function startSketch() {   
     // set event listeners for mouseovers on every grid square
     // on mouse hover, increase opacity by 10%
     const squareList = document.querySelectorAll(".grid-square")
@@ -36,10 +35,29 @@ function startSketch() {
             }   
         })
     })
+}
 
-    const resetBtn = document.querySelector(".reset")
-    resetBtn.addEventListener('click', resetOpacity)
+function changeDimensions() {
+    resetOpacity()
+    gridContainer.innerHTML = ""
+    const slider = document.querySelector(".dimension-slider")
+    makeGrid(slider.value)
+    startSketch()
 }
 
 makeGrid()
 startSketch()
+
+//listen for other inputs
+
+const resetBtn = document.querySelector(".reset")
+resetBtn.addEventListener('click', resetOpacity)
+
+const slider = document.querySelector(".dimension-slider")
+const rangeValue = document.querySelector(".range-value")
+slider.addEventListener("input", (event) => {
+    rangeValue.textContent = event.target.value
+})
+
+const changeBtn = document.querySelector(".slider-confirm")
+changeBtn.addEventListener('click', changeDimensions)
