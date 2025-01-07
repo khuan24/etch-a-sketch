@@ -17,4 +17,29 @@ function makeGrid() {
     }
 }
 
+function resetOpacity() {
+    // set the opacity of all grid squares to 0%
+    const squareList = document.querySelectorAll(".grid-square")
+    squareList.forEach((sq) => {
+        sq.style.opacity = 0
+    })
+}
+
+function startSketch() {
+    // set event listeners for mouseovers on every grid square
+    // on mouse hover, increase opacity by 10%
+    const squareList = document.querySelectorAll(".grid-square")
+    squareList.forEach((sq) => {
+        sq.addEventListener('mouseover', () => {
+            if (sq.style.opacity < 0.9) {
+                sq.style.opacity = +sq.style.opacity + 0.1
+            }   
+        })
+    })
+
+    const resetBtn = document.querySelector(".reset")
+    resetBtn.addEventListener('click', resetOpacity)
+}
+
 makeGrid()
+startSketch()
